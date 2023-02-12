@@ -2,7 +2,7 @@
 Repositorio para la tarea número uno de Bioinformática II
 
 Por:
-- Garcia Jessica
-- Rivera Manuel
+- Garcia Martinez Jessica
+- Rivera Ceron Manuel
 - Rodriguez Perez Axel
 
