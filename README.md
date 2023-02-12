@@ -1,5 +1,8 @@
 # BioII_T01
-Repositorio para la tarea número uno de Bioinformática
-Cosas chidas
+Repositorio para la tarea número uno de Bioinformática II
 
-Mis cambios en Rstudio
+Por:
+- Garcia Jessica
+- Rivera Manuel
+- Rodriguez Perez Axel
+
