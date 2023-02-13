@@ -8,7 +8,13 @@ output: html_document
 # Practica archivo BAM
 
 ```{r}
-# Entramos a un qlogin
+# Entrar a un qlogin
 qlogin
+# Entrar a la carpeta donde se encuentra el archivp
+cd /mnt/Timina/bioinfoII/format_qc
+# Se copia el archivo a la caarpeta donde se estara trabajando trabajando
+cp NA20538.bam /mnt/Timina/bioinfoII/arodriguez
+# Dirigirse a la carpeta donde se trabaja
+
 ```
 
