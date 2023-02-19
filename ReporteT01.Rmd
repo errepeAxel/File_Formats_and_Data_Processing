@@ -3,8 +3,16 @@ title: "ReporteT01"
 author: "Axel R"
 date: "2023-02-10"
 output:
-  pdf_document: default
-  html_document: default
+  pdf_document: 
+    toc: true
+    toc_depth: 3
+    number_sections: true
+  html_document:
+    toc: true # table of content true
+    toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: true  ## if you want number sections at each table header
+    theme: united  # many options for theme, this one is my favorite.
+    highlight: tango  # specifies the syntax highlighting style
 ---
 
 # Practica archivo BAM
@@ -73,7 +81,8 @@ samtools flagstat NA20538.bam | grep 'mapped'| awk '{print $0}'| head -n 1
 
 El comando `awk '{print $0}'` imprimir la primera fila del output del comando `samtools flagstat NA20538.bam | grep 'mapped'`.
 
->>Generalmente `awk '{print $n}'` es utilizado para imprimir la $n$-esima columna de un output. `awk ‘NR==m {print $n}’` se utiliza para imprimir la $m$-esima fila y la $n$-esima columna.
+<div class="alert alert-block alert-info">
+Generalmente `awk '{print $n}'` es utilizado para imprimir la $n$-esima columna de un output. `awk ‘NR==m {print $n}’` se utiliza para imprimir la $m$-esima fila y la $n$-esima columna.</div>
 
 
 ### Otras alternativas
