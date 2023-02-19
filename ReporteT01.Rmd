@@ -1,6 +1,6 @@
 ---
 title: "ReporteT01"
-author: "Axel R"
+author: "Jessica Garcia, Manuel Rivera, Axel Rodriguez"
 date: "2023-02-10"
 output:
   pdf_document: 
