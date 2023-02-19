@@ -427,11 +427,18 @@ samtools flagstat NA20538.bam | grep &#39;mapped&#39;| awk &#39;{print $0}&#39;|
 <p>El comando <code>awk &#39;{print $0}&#39;</code> imprimir la primera fila del
 output del comando
 <code>samtools flagstat NA20538.bam | grep &#39;mapped&#39;</code>.</p>
-<aside>
+<blockquote>
+<blockquote>
 <p>Generalmente <code>awk &#39;{print $n}&#39;</code> es utilizado para imprimir
 la <span class="math inline">\(n\)</span>-esima columna de un output.
 <code>awk ‘NR==m {print $n}’</code> se utiliza para imprimir la <span class="math inline">\(m\)</span>-esima fila y la <span class="math inline">\(n\)</span>-esima columna.</p>
-</aside>
+</blockquote>
+</blockquote>
+<div id="hello" class="greeting message" style="color: blue;">
+<p>Generalmente <code>awk &#39;{print $n}&#39;</code> es utilizado para imprimir
+la <span class="math inline">\(n\)</span>-esima columna de un output.
+<code>awk ‘NR==m {print $n}’</code> se utiliza para imprimir la <span class="math inline">\(m\)</span>-esima fila y la <span class="math inline">\(n\)</span>-esima columna.</p>
+</div>
 <div id="otras-alternativas-1" class="section level3">
 <h3>Otras alternativas</h3>
 <pre class="bash"><code># Lecturas mapeadas (Mapped alignments)
