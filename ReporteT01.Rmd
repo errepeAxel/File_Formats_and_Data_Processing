@@ -17,7 +17,7 @@ output:
 
 # Practica archivo BAM
 
-```bash
+```{bash}
 # Entrar a un qlogin
 qlogin
 # Entrar a la carpeta donde se encuentra el archivp
@@ -30,6 +30,105 @@ cp NA20538.bam /mnt/Timina/bioinfoII/arodriguez
 
 
 # Practica bfc
+
+## What is a BCF?
+
+Un BCF es el archivo binario del VCF.
+
+#https://evomics.org/vcf-and-bcf/#:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.
+
+##  Can you convert bcf to vcf using bcftools? How?
+
+Si es posible convertir un bcf a vcf utilizando el comando $view$
+
+```{bash, eval=FALSE, include=TRUE}
+
+#Convertir un BCG --> VCF
+bcftools view 1kg.bcf -o 1kg.vcf
+```
+
+
+1. Iniciar sesion en el cluster
+```{bash, include=FALSE}
+ssh mrivera@dna.lavis.unam.mx
+8RtNd44j8Dbs
+
+qlogin
+cd /mnt/Timina/bioinfoII/mrivera/Tarea01
+```
+
+## How many samples are in the BCF? Hint: use the -l option.
+
+Hay 50 muestras en total.
+
+```{bash, eval=FALSE, include=TRUE}
+
+# Muestra los nombres de las muestras
+bcftools query -l 1kg.vcf
+
+# Muestra el numero de muestras con un pípeline
+bcftools query -l file.bcf | wc -l
+```
+
+## "What is the genotype of the sample HG00107 at the position
+20:24019472? Hint: use the combination of -r, -s, and -f '[ %TGT]\n'
+options"
+
+```{bash, eval=FALSE, include=TRUE}
+
+#Comprimir VCF --> GZIP
+bcftools view 1kg.vcf -Oz -o 1kg.vcf.gz
+
+#Filtrar por nombre de la muestra
+bcftools view -s HG00107 1kg.vcf.gz
+ 
+#INDEX
+bcftools index 1kg.vcf.gz
+
+#Filtrar por posicion de la muestra y nombre
+bcftools view -r 20:24019472 -s HG00107 1kg.vcf.gz
+
+#Mostrar el genotipo
+bcftools view -r 20:24019472 -s HG00107 1kg.vcf.gz | bcftools query -f '[ %TGT]\n' 
+```
+
+
+## How many positions there are with more than 10 alternate alleles?
+(See the INFO/AC tag.) Hint: use the -i filtering option
+
+```{bash, eval=FALSE, include=TRUE}
+
+# Saber posiciones
+bcftools view -i 'AC>10' 1kg.vcf| wc -l
+
+```
+
+
+## List all positions where HG00107 has a non-reference genotype and
+the read depth is bigger than 10.
+
+```{bash, eval=FALSE, include=TRUE}
+
+# Mostrar la cobertura
+bcftools query -f '[ % DP]\n'
+
+# Filtrar por nombre
+bcftools view -s HG00107 1kg.vcf
+
+# Filtrar por no tener genoma de referencia
+bcftools view -i 'GT="alt"' 1kg.vcf
+
+# Ambos filtros
+bcftools view -s HG00107 -i ' GT="." && DP>10' 1kg.vcf | wc -l #DUDA
+bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l #DUDA
+
+#Contar las posiciones
+bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l #DUDA
+
+#PRUEBA
+bcftools view -r 20:29908139 -s HG00107 1kg.vcf.gz 
+29908139
+```
 
 # Practica estadisticas
 
