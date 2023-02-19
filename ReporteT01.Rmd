@@ -47,16 +47,6 @@ Si es posible convertir un bcf a vcf utilizando el comando $view$
 bcftools view 1kg.bcf -o 1kg.vcf
 ```
 
-
-1. Iniciar sesion en el cluster
-```{bash, include=FALSE}
-ssh mrivera@dna.lavis.unam.mx
-8RtNd44j8Dbs
-
-qlogin
-cd /mnt/Timina/bioinfoII/mrivera/Tarea01
-```
-
 ## How many samples are in the BCF? Hint: use the -l option.
 
 Hay 50 muestras en total.
