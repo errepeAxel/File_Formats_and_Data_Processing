@@ -3,8 +3,8 @@ title: "ReporteT01"
 author: "Axel R"
 date: "2023-02-10"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Practica archivo BAM
@@ -62,7 +62,7 @@ samtools stats NA20538.bam | grep 'raw total sequences' | cut -f 2- # 347367
 
 ## What proportion of the reads were mapped?
 
-Con el mismo comando de `samtools flagstat NA20538.bam`, se observa que el porcentaje de *****reads***** mapeados fue de **93.26%** (323,966 lecturas). 
+Con el mismo comando de `samtools flagstat NA20538.bam`, se observa que el porcentaje de _reads_ mapeados fue de **93.26%** (323,966 lecturas). 
 
 ```bash
 # Filtramos los resultados que coincidan con 'mapped' e imprimimos
@@ -74,7 +74,7 @@ samtools flagstat NA20538.bam | grep 'mapped'| awk '{print $0}'| head -n 1
 El comando `awk '{print $0}'` imprimir la primera fila del output del comando `samtools flagstat NA20538.bam | grep 'mapped'`.
 
 <aside>
-📌 Generalmente `awk '{print $n}'` es utilizado para imprimir la $n$-esima columna de un output. `awk ‘NR==m {print $n}’` se utiliza para imprimir la $m$-esima fila y la $n$-esima columna.
+Generalmente `awk '{print $n}'` es utilizado para imprimir la $n$-esima columna de un output. `awk ‘NR==m {print $n}’` se utiliza para imprimir la $m$-esima fila y la $n$-esima columna.
 
 </aside>
 

@@ -418,7 +418,7 @@ ordenado.</li>
 <div id="what-proportion-of-the-reads-were-mapped" class="section level2">
 <h2>What proportion of the reads were mapped?</h2>
 <p>Con el mismo comando de <code>samtools flagstat NA20538.bam</code>,
-se observa que el porcentaje de *****reads***** mapeados fue de
+se observa que el porcentaje de <em>reads</em> mapeados fue de
 <strong>93.26%</strong> (323,966 lecturas).</p>
 <pre class="bash"><code># Filtramos los resultados que coincidan con &#39;mapped&#39; e imprimimos
 # todos los argumentos de la primera fila
@@ -428,10 +428,9 @@ samtools flagstat NA20538.bam | grep &#39;mapped&#39;| awk &#39;{print $0}&#39;|
 output del comando
 <code>samtools flagstat NA20538.bam | grep &#39;mapped&#39;</code>.</p>
 <aside>
-<p>📌 Generalmente <code>awk &#39;{print $n}&#39;</code> es utilizado para
-imprimir la <span class="math inline">\(n\)</span>-esima columna de un
-output. <code>awk ‘NR==m {print $n}’</code> se utiliza para imprimir la
-<span class="math inline">\(m\)</span>-esima fila y la <span class="math inline">\(n\)</span>-esima columna.</p>
+<p>Generalmente <code>awk &#39;{print $n}&#39;</code> es utilizado para imprimir
+la <span class="math inline">\(n\)</span>-esima columna de un output.
+<code>awk ‘NR==m {print $n}’</code> se utiliza para imprimir la <span class="math inline">\(m\)</span>-esima fila y la <span class="math inline">\(n\)</span>-esima columna.</p>
 </aside>
 <div id="otras-alternativas-1" class="section level3">
 <h3>Otras alternativas</h3>
