@@ -28,6 +28,7 @@ cp NA20538.bam /mnt/Timina/bioinfoII/arodriguez
 # Dirigirse a la carpeta donde se trabaja
 ```
 
+Le estoy picando a ver si se pueden así sin conectar mi R
 
 
 # Practica archivo bfc
