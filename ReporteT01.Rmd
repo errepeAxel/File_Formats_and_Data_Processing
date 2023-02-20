@@ -35,7 +35,7 @@ samtools view –H NA20538.bam
 
 ## ¿Qué significan las siglas RG? 
 
-RG: _read group_, lecturas de grupo. Pueden contener la información acerca de las lecturas de grupo.
+RG: _read group_, lecturas de grupo.
 
 ## ¿Qué es "lane ID"?
 
