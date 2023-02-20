@@ -248,3 +248,14 @@ Finalmente, en la seccion de Sumary Numbers (`SN`) generada por `samtools stats`
 
 - insert size average:	**190.3**
 - insert size standard deviation: **136.4**
+
+
+
+
+**## Referencias**
+1. Copiar en Linux: con CP es muy sencillo. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/
+
+2. Markdown: introducción al lenguaje de marcado. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-markdown/
+
+3. The SAM/BAM Format Specification Working Group. (s/f). Sequence alignment/map format specification. Github.io. Recuperado el 20 de febrero de 2023, de https://samtools.github.io/hts-specs/SAMv1.pdf
+
