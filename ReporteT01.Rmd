@@ -35,7 +35,7 @@ samtools view –H NA20538.bam
 
 ## ¿Qué significan las siglas RG? 
 
-Lecturas de grupo (read group). Pueden contener la información acerca de las lecturas de grupo.
+RG: _read group_, lecturas de grupo. Pueden contener la información acerca de las lecturas de grupo.
 
 ## ¿Qué es "lane ID"?
 
@@ -43,7 +43,7 @@ Número de identificación para cada lectura de grupo, este número es único.
 
 ## ¿Cuál es la plataforma de secuenciación?
 
-PL: plataforma usada para generar las lecturas: Illumina
+PL _platform_, plataforma usada para generar las lecturas: Illumina
 
 ## ¿Qué versión de ensamblaje humano se usó para realizar las alineaciones?
 
@@ -51,11 +51,11 @@ AS _genome assembly identifier_, versión del ensamblaje humano: NCBI37
 
 ## ¿Qué programadas fueron utlizados para crear este archivo BAM?
 
-GATK (Genome Analysis Toolkit) IndelRealigner VN: 1.0.4487, GATK TableRecalibration VN: 1.0.4487 y bwa (Burrows-Wheeler Aligner) VN: 0.5.5
+GATK _(Genome Analysis Toolkit)_ IndelRealigner VN: 1.0.4487, GATK TableRecalibration VN: 1.0.4487 y bwa _(Burrows-Wheeler Aligner)_ VN: 0.5.5
 
 ## ¿Qué versión de bwa fue usada para alinear las lecturas?
 
-VN: 0.5.5
+VN _program version_, versión del programa: 0.5.5
 
 ```bash
 #Observar información particular del BAM para responder las siguientes preguntas
