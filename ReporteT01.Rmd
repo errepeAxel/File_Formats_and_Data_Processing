@@ -3,21 +3,21 @@ title: "ReporteT01"
 author: "Jessica Garcia, Manuel Rivera, Axel Rodriguez"
 date: "2023-02-10"
 output:
-  pdf_document: 
-    toc: true
-    toc_depth: 3
-    number_sections: true
   html_document:
     toc: true # table of content true
     toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
     number_sections: true  ## if you want number sections at each table header
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
+  pdf_document: 
+    toc: true
+    toc_depth: 3
+    number_sections: true
 ---
 
 # Practica archivo BAM
 
-```{bash}
+```bash
 # Entrar a un qlogin
 qlogin
 # Entrar a la carpeta donde se encuentra el archivp
@@ -41,8 +41,7 @@ Un BCF es el archivo binario del VCF.
 
 Si es posible convertir un bcf a vcf utilizando el comando $view$
 
-```{bash, eval=FALSE, include=TRUE}
-
+```bash
 #Convertir un BCG --> VCF
 bcftools view 1kg.bcf -o 1kg.vcf
 ```
@@ -51,7 +50,7 @@ bcftools view 1kg.bcf -o 1kg.vcf
 
 Hay 50 muestras en total.
 
-```{bash, eval=FALSE, include=TRUE}
+```bash
 
 # Muestra los nombres de las muestras
 bcftools query -l 1kg.vcf
@@ -64,7 +63,7 @@ bcftools query -l file.bcf | wc -l
 20:24019472? Hint: use the combination of -r, -s, and -f '[ %TGT]\n'
 options"
 
-```{bash, eval=FALSE, include=TRUE}
+```bash
 
 #Comprimir VCF --> GZIP
 bcftools view 1kg.vcf -Oz -o 1kg.vcf.gz
@@ -86,8 +85,7 @@ bcftools view -r 20:24019472 -s HG00107 1kg.vcf.gz | bcftools query -f '[ %TGT]\
 ## How many positions there are with more than 10 alternate alleles?
 (See the INFO/AC tag.) Hint: use the -i filtering option
 
-```{bash, eval=FALSE, include=TRUE}
-
+```bash
 # Saber posiciones
 bcftools view -i 'AC>10' 1kg.vcf| wc -l
 
@@ -97,7 +95,7 @@ bcftools view -i 'AC>10' 1kg.vcf| wc -l
 ## List all positions where HG00107 has a non-reference genotype and
 the read depth is bigger than 10.
 
-```{bash, eval=FALSE, include=TRUE}
+```bash
 
 # Mostrar la cobertura
 bcftools query -f '[ % DP]\n'
