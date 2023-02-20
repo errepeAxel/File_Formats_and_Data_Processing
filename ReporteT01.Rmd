@@ -30,7 +30,7 @@ cp NA20538.bam /mnt/Timina/bioinfoII/arodriguez
 
 
 
-# Practica bfc
+# Practica archivo bfc
 
 ## What is a BCF?
 
@@ -119,9 +119,9 @@ bcftools view -r 20:29908139 -s HG00107 1kg.vcf.gz
 29908139
 ```
 
-# Practica estadisticas
+#Practicas estadisticas
 
-## What is the total number of reads?
+##¿Cual es numero total de lecturas?
 Usando el comando `samtools flagstat` se puede observar las estadisticas generales del archivo BAM. Si lo que se requiere saber es el **numero total de lecturas**, entonces se utiliza el comando:
 
 ```bash
@@ -134,7 +134,7 @@ En donde el comando `head -n 1` funciona para imprimir solo la primera linea del
 347367 + 0 in total (QC-passed reads + QC-failed reads)
 ```
 
-Como se observa, el numero de _reads_ totales fue de **347,367**.
+Como se observa, el numero de lecturas totales fue de **347,367**.
 
 ### Otras alternativas
 
@@ -156,7 +156,8 @@ samtools stats NA20538.bam | grep 'raw total sequences' | cut -f 2- # 347367
 - `cut` se utiliza para seleccionar una columna del output. Con el parametro `-f 2-` le indicamos que solo queremos las ultimas dos columnas del output.
 - `grep 'raw total sequences'` se utiliza para especificar que solo se requieren el total de lecturas, lo que nos da un output mas ordenado.
 
-## What proportion of the reads were mapped?
+##¿Que proorcion de las lecturas fueron mapeadas?
+
 
 Con el mismo comando de `samtools flagstat NA20538.bam`, se observa que el porcentaje de _reads_ mapeados fue de **93.26%** (323,966 lecturas). 
 
