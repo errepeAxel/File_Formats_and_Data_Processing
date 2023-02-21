@@ -1718,10 +1718,12 @@ cobertura es mayor a 10.</h2>
 <div id="practicas-estadisticas" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Practicas
 estadisticas</h1>
-<p>##¿Cual es numero total de lecturas? Usando el comando
-<code>samtools flagstat</code> se puede observar las estadisticas
-generales del archivo BAM. Si lo que se requiere saber es el
-<strong>numero total de lecturas</strong>, entonces se utiliza el
+<div id="cual-es-numero-total-de-lecturas" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> ¿Cual es numero total
+de lecturas?</h2>
+<p>Usando el comando <code>samtools flagstat</code> se puede observar
+las estadisticas generales del archivo BAM. Si lo que se requiere saber
+es el <strong>numero total de lecturas</strong>, entonces se utiliza el
 comando:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat NA20538.bam <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
 <p>En donde el comando <code>head -n 1</code> funciona para imprimir
@@ -1730,8 +1732,8 @@ lecturas totales.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">347367</span> + 0 in total <span class="er">(</span><span class="ex">QC-passed</span> reads + QC-failed reads<span class="kw">)</span></span></code></pre></div>
 <p>Como se observa, el numero de lecturas totales fue de
 <strong>347,367</strong>.</p>
-<div id="otras-alternativas" class="section level3" number="3.0.1">
-<h3><span class="header-section-number">3.0.1</span> Otras
+<div id="otras-alternativas" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Otras
 alternativas</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estadisticas generales</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat NA20538.bam</span>
@@ -1759,7 +1761,11 @@ ultimas dos columnas del output.</li>
 que solo se requieren el total de lecturas, lo que nos da un output mas
 ordenado.</li>
 </ul>
-<p>##¿Que proorcion de las lecturas fueron mapeadas?</p>
+</div>
+</div>
+<div id="que-proorcion-de-las-lecturas-fueron-mapeadas" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> ¿Que proorcion de las
+lecturas fueron mapeadas?</h2>
 <p>Con el mismo comando de <code>samtools flagstat NA20538.bam</code>,
 se observa que el porcentaje de <em>reads</em> mapeados fue de
 <strong>93.26%</strong> (323,966 lecturas).</p>
@@ -1775,9 +1781,8 @@ Generalmente <code>awk &#39;{print $n}&#39;</code> es utilizado para imprimir la
 <span class="math inline">\(n\)</span>-esima columna de un output.
 <code>awk ‘NR==m {print $n}’</code> se utiliza para imprimir la <span class="math inline">\(m\)</span>-esima fila y la <span class="math inline">\(n\)</span>-esima columna.
 </div>
-</div>
-<div id="otras-alternativas-1" class="section level3" number="3.0.2">
-<h3><span class="header-section-number">3.0.2</span> Otras
+<div id="otras-alternativas-1" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Otras
 alternativas</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lecturas mapeadas (Mapped alignments)</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1790,29 +1795,34 @@ alternativas</h3>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Ejemplo 5</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> stats NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;SN&#39;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;reads mapped&#39;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 2- <span class="co">#323966</span></span></code></pre></div>
 </div>
-<div id="cuantas-lecturas-fueron-mapeadas-a-un-cromosoma-diferente" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> ¿Cuantas lecturas
+</div>
+<div id="cuantas-lecturas-fueron-mapeadas-a-un-cromosoma-diferente" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> ¿Cuantas lecturas
 fueron mapeadas a un cromosoma diferente?</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> stats NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;pairs on different chromosomes:&#39;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 2-</span></code></pre></div>
 <p>De acuerdo a la seccion <code>SN</code> del archivo,
 <strong>4,055</strong> lecturas fueron mapeadas a un cromosoma
 diferente.</p>
 </div>
-<div id="what-is-the-insert-size-mean-and-standard-deviation" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> What is the insert
-size mean and standard deviation?</h2>
+<div id="cual-es-el-tamaño-de-inserción-promedio-y-su-desviación-estándar" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> ¿Cual es el tamaño de
+inserción promedio y su desviación estándar?</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> stats <span class="at">-F</span> SECONDARY NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;insert size&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 2-</span></code></pre></div>
 <p>Finalmente, en la seccion de Sumary Numbers (<code>SN</code>)
 generada por <code>samtools stats</code> se encuentra la información
 requerida.</p>
 <ul>
-<li>insert size average: <strong>190.3</strong></li>
-<li>insert size standard deviation: <strong>136.4</strong></li>
+<li>tamaño promedio de inserción: <strong>190.3</strong></li>
+<li>desviación estándar del tamaño de inserción:
+<strong>136.4</strong></li>
 </ul>
-<p><strong>## Referencias</strong> 1. Copiar en Linux: con CP es muy
-sencillo. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de
-2023, de <a href="https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/" class="uri">https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/</a></p>
-<ol start="2" style="list-style-type: decimal">
+</div>
+</div>
+<div id="referencias" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Referencias</h1>
+<ol style="list-style-type: decimal">
+<li><p>Copiar en Linux: con CP es muy sencillo. (s/f). IONOS Digital
+Guide. Recuperado el 20 de febrero de 2023, de <a href="https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/" class="uri">https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/</a></p></li>
 <li><p>Markdown: introducción al lenguaje de marcado. (s/f). IONOS
 Digital Guide. Recuperado el 20 de febrero de 2023, de <a href="https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-markdown/" class="uri">https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-markdown/</a></p></li>
 <li><p>The SAM/BAM Format Specification Working Group. (s/f). Sequence
@@ -1821,7 +1831,6 @@ febrero de 2023, de <a href="https://samtools.github.io/hts-specs/SAMv1.pdf" cla
 <li><p>Anónimo. (s/f). VCF AND BCF. Evolution and Genomics. Recuperado
 el 20 de febrero de 2023, de <a href="https://evomics.org/vcf-and-bcf/#" class="uri">https://evomics.org/vcf-and-bcf/#</a>:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.</p></li>
 </ol>
-</div>
 </div>
 
 

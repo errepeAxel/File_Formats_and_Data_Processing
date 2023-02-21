@@ -245,7 +245,7 @@ Finalmente, en la seccion de Sumary Numbers (`SN`) generada por `samtools stats`
 
 
 
-**## Referencias**
+# Referencias
 1. Copiar en Linux: con CP es muy sencillo. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/
 
 2. Markdown: introducción al lenguaje de marcado. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-markdown/
