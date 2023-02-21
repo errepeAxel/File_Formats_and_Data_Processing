@@ -118,7 +118,7 @@ Hay 50 muestras en total.
 bcftools query -l 1kg.vcf
 
 # Muestra el numero de muestras con un pípeline
-bcftools query -l file.bcf | wc -l
+bcftools query -l 1kg.bcf | wc -l
 ```
 
 ## ¿Cual es el genotipo de la muestra HG00107 en la posicion 20:24019472?
