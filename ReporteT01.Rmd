@@ -3,6 +3,10 @@ title: "ReporteT01"
 author: "Jessica Garcia, Manuel Rivera, Axel Rodriguez"
 date: "2023-02-10"
 output:
+  pdf_document: 
+    toc: true
+    toc_depth: 3
+    number_sections: true
   html_document:
     toc: true # table of content true
     toc_float: yes
@@ -10,10 +14,6 @@ output:
     number_sections: true  ## if you want number sections at each table header
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
-  pdf_document: 
-    toc: true
-    toc_depth: 3
-    number_sections: true
 ---
 
 # Practica archivo BAM
@@ -43,15 +43,37 @@ Identificador del grupo de lectura, esta etiqueta identifica a qué grupo de lec
 
 ## ¿Cuál es la plataforma de secuenciación?
 
-PL _platform_, plataforma usada para generar las lecturas: Illumina
+PL _platform_, plataforma usada para generar las lecturas: Illumina. Para conocer la plataforma utilizada, existe la etiqueta PL, que se puede encontrar en el encabezado del archivo BAM.
+
+```bash
+# Buscamos la etiqueta PL dentro del header
+samtools view -H NA20538.bam | grep 'PL'
+```
 
 ## ¿Qué versión de ensamblaje humano se usó para realizar las alineaciones?
 
-AS _genome assembly identifier_, versión del ensamblaje humano: NCBI37
+AS _genome assembly identifier_, versión del ensamblaje humano: NCBI37 (**GRCh37** Genome Reference Consortium Human Build 37). 
+
+Las entradas @SQ del encabezado contienen información acerca de las secuencias de referencia. El AS nos habla acerca del genoma de referencia utilizado para realizar el alineamiento.
+
+```bash
+samtools view -H NA20538.bam | grep 'AS'
+```
 
 ## ¿Qué programadas fueron utlizados para crear este archivo BAM?
 
-GATK _(Genome Analysis Toolkit)_ IndelRealigner VN: 1.0.4487, GATK TableRecalibration VN: 1.0.4487 y bwa _(Burrows-Wheeler Aligner)_ VN: 0.5.5
+La entrada @PG (program) del encabezado contiene la informacion de los programas utilizados. 
+
+```bash
+samtools view -H NA20538.bam | grep 'PG'| less -S
+```
+
+Los programas utilizados fueron:
+
+- Genome Analysis Toolkit (GATK) IndelRealigner (version 1.0.4487)
+- Genome Analysis Toolkit (GATK) TableRecalibration (version 1.0.4487)
+- Burrows-Wheeler Aligner (bwa) (version 0.5.5)
+
 
 ## ¿Qué versión de bwa fue usada para alinear las lecturas?
 
