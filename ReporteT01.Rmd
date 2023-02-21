@@ -215,7 +215,7 @@ samtools stats NA20538.bam | grep 'raw total sequences' | cut -f 2- # 347367
 - `cut` se utiliza para seleccionar una columna del output. Con el parametro `-f 2-` le indicamos que solo queremos las ultimas dos columnas del output.
 - `grep 'raw total sequences'` se utiliza para especificar que solo se requieren el total de lecturas, lo que nos da un output mas ordenado.
 
-## ¿Que proorcion de las lecturas fueron mapeadas?
+## ¿Que proporcion de las lecturas fueron mapeadas?
 
 Con el mismo comando de `samtools flagstat NA20538.bam`, se observa que el porcentaje de _reads_ mapeados fue de **93.26%** (323,966 lecturas). 
 
