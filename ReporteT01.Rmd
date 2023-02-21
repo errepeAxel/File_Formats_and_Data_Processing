@@ -152,13 +152,16 @@ Hay 4822 posiciones que tienen mas de 10 alelos diferentes.
 
 ```bash
 # Saber posiciones
-bcftools view -i 'AC>10' 1kg.vcf| wc -l
+bcftools view -i 'AC>10' 1kg.vcf| wc -l #DUDA arroja mas
+
+# Comando duda
+bcftools query -f '%INFO/AC\n' 1kg.bcf -i'AC>10' | wc -l
 
 ```
 
 ## Lista todas las posiciones en las que HG00107 no tiene un genotipo de referencia y la cobertura es mayor a 10.
 
-Hay 44 posiciones en las que no hay un genotipo de referencia y tienen cobretura mayor a 10.
+Hay 451 posiciones en las que no hay un genotipo de referencia y tienen cobretura mayor a 10.
 
 ```bash
 
@@ -172,10 +175,13 @@ bcftools view -s HG00107 1kg.vcf
 bcftools view -i 'GT="alt"' 1kg.vcf
 
 # Ambos filtros
-bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf 
+bcftools query -s HG00107 -f '[%POS]\n' -i 'GT ="alt" & DP>10' 1kg.vcf.gz
 
 #Contar las posiciones
-bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l 
+bcftools query -s HG00107 -f '[%POS]\n' -i 'GT ="alt" & DP>10' 1kg.vcf.gz | wc -l 
+
+#DUDA EN COMANDO 
+bcftools view -s HG00107 | query -i ' REF="." && DP>10' 1kg.vcf | wc -l  #arroja menos
 ```
 
 # Practicas estadisticas
