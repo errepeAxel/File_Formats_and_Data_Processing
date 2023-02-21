@@ -35,11 +35,11 @@ samtools view –H NA20538.bam
 
 ## ¿Qué significan las siglas RG? 
 
-RG: _read group_, lecturas de grupo.
+RG: _read group_, lecturas de grupo que se generan a partir de una única ejecución de un secuenciador. 
 
 ## ¿Qué es "lane ID"?
 
-Número de identificación para cada lectura de grupo, este número es único.
+Identificador del grupo de lectura, esta etiqueta identifica a qué grupo de lectura pertenece cada lectura, por lo que el ID de cada grupo de lectura debe ser único.
 
 ## ¿Cuál es la plataforma de secuenciación?
 
