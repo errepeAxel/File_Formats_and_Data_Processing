@@ -3,10 +3,6 @@ title: "ReporteT01"
 author: "Jessica Garcia, Manuel Rivera, Axel Rodriguez"
 date: "2023-02-10"
 output:
-  pdf_document: 
-    toc: true
-    toc_depth: 3
-    number_sections: true
   html_document:
     toc: true # table of content true
     toc_float: yes
@@ -14,6 +10,10 @@ output:
     number_sections: true  ## if you want number sections at each table header
     theme: united  # many options for theme, this one is my favorite.
     highlight: tango  # specifies the syntax highlighting style
+  pdf_document: 
+    toc: true
+    toc_depth: 3
+    number_sections: true
 ---
 
 # Practica archivo BAM
@@ -62,7 +62,7 @@ samtools view -H NA20538.bam | grep 'AS'
 
 ## ¿Qué programadas fueron utlizados para crear este archivo BAM?
 
-La entrada @PG (program) del encabezado contiene la informacion de los programas utilizados. 
+La entrada @PG (*program*) del encabezado contiene la informacion de los programas utilizados. 
 
 ```bash
 samtools view -H NA20538.bam | grep 'PG'| less -S
@@ -259,7 +259,7 @@ De acuerdo a la seccion `SN` del archivo, **4,055** lecturas fueron mapeadas a u
 samtools stats -F SECONDARY NA20538.bam | grep "insert size" | cut -f 2-
 ```
 
-Finalmente, en la seccion de Sumary Numbers (`SN`) generada por `samtools stats` se encuentra la información requerida.
+Finalmente, en la seccion de _Sumary Numbers_ (`SN`) generada por `samtools stats` se encuentra la información requerida.
 
 - tamaño promedio de inserción: **190.3**
 - desviación estándar del tamaño de inserción: **136.4**

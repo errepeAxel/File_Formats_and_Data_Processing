@@ -1621,8 +1621,8 @@ alineamiento.</p>
 <div id="qué-programadas-fueron-utlizados-para-crear-este-archivo-bam" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> ¿Qué programadas
 fueron utlizados para crear este archivo BAM?</h2>
-<p>La entrada <span class="citation">@PG</span> (program) del encabezado
-contiene la informacion de los programas utilizados.</p>
+<p>La entrada <span class="citation">@PG</span> (<em>program</em>) del
+encabezado contiene la informacion de los programas utilizados.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-H</span> NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;PG&#39;</span><span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre></div>
 <p>Los programas utilizados fueron:</p>
 <ul>
@@ -1679,7 +1679,7 @@ en el BCF?</h2>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-l</span> 1kg.vcf</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Muestra el numero de muestras con un pípeline</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-l</span> file.bcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-l</span> 1kg.bcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
 </div>
 <div id="cual-es-el-genotipo-de-la-muestra-hg00107-en-la-posicion-2024019472" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> ¿Cual es el genotipo
@@ -1825,9 +1825,9 @@ diferente.</p>
 <h2><span class="header-section-number">3.4</span> ¿Cual es el tamaño de
 inserción promedio y su desviación estándar?</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> stats <span class="at">-F</span> SECONDARY NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;insert size&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 2-</span></code></pre></div>
-<p>Finalmente, en la seccion de Sumary Numbers (<code>SN</code>)
-generada por <code>samtools stats</code> se encuentra la información
-requerida.</p>
+<p>Finalmente, en la seccion de <em>Sumary Numbers</em>
+(<code>SN</code>) generada por <code>samtools stats</code> se encuentra
+la información requerida.</p>
 <ul>
 <li>tamaño promedio de inserción: <strong>190.3</strong></li>
 <li>desviación estándar del tamaño de inserción:
