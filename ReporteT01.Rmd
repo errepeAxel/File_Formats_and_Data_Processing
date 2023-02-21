@@ -71,7 +71,6 @@ ERR003814.1408899
 ## ¿Cuál es la calidad de la primera lectura? 
 23
 
-
 # Practica archivo bfc
 
 ## ¿Que es un BCF?
