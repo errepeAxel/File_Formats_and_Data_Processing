@@ -23,23 +23,62 @@ output:
 qlogin
 # Entrar a la carpeta donde se encuentra el archivp
 cd /mnt/Timina/bioinfoII/format_qc
-# Se copia el archivo a la caarpeta donde se estara trabajando trabajando
+# Copiar el archivo a la carpeta donde se estará trabajando
 cp NA20538.bam /mnt/Timina/bioinfoII/arodriguez
 # Dirigirse a la carpeta donde se trabaja
+cd /mnt/Timina/bioinfoII/arodriguez
+# Cargar Samtools versión 1.9
+module load samtools/1.9
+# Visualizar información del BAM
+samtools view –H NA20538.bam 
 ```
 
-Le estoy picando a ver si se pueden así sin conectar mi R
+## ¿Qué significan las siglas RG? 
+
+RG: _read group_, lecturas de grupo que se generan a partir de una única ejecución de un secuenciador. 
+
+## ¿Qué es "lane ID"?
+
+Identificador del grupo de lectura, esta etiqueta identifica a qué grupo de lectura pertenece cada lectura, por lo que el ID de cada grupo de lectura debe ser único.
+
+## ¿Cuál es la plataforma de secuenciación?
+
+PL _platform_, plataforma usada para generar las lecturas: Illumina
+
+## ¿Qué versión de ensamblaje humano se usó para realizar las alineaciones?
+
+AS _genome assembly identifier_, versión del ensamblaje humano: NCBI37
+
+## ¿Qué programadas fueron utlizados para crear este archivo BAM?
+
+GATK _(Genome Analysis Toolkit)_ IndelRealigner VN: 1.0.4487, GATK TableRecalibration VN: 1.0.4487 y bwa _(Burrows-Wheeler Aligner)_ VN: 0.5.5
+
+## ¿Qué versión de bwa fue usada para alinear las lecturas?
+
+VN _program version_, versión del programa: 0.5.5
+
+```bash
+#Observar información particular del BAM para responder las siguientes preguntas
+samtools view NA20538.bam | head
+```
+
+## ¿Cuál es el nombre de la primera lectura?
+ERR003814.1408899
+
+## ¿En qué posición inicia el alineamiento de la lectura?
+19999970
+
+## ¿Cuál es la calidad de la primera lectura? 
+23
 
 
 # Practica archivo bfc
 
-## What is a BCF?
+## ¿Que es un BCF?
 
 Un BCF es el archivo binario del VCF.
 
-#https://evomics.org/vcf-and-bcf/#:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.
-
-##  Can you convert bcf to vcf using bcftools? How?
+##  ¿Como convertir un BCF-->VCF?
 
 Si es posible convertir un bcf a vcf utilizando el comando $view$
 
@@ -48,7 +87,7 @@ Si es posible convertir un bcf a vcf utilizando el comando $view$
 bcftools view 1kg.bcf -o 1kg.vcf
 ```
 
-## How many samples are in the BCF? Hint: use the -l option.
+## ¿Cuantas muestras hay en el BCF?
 
 Hay 50 muestras en total.
 
@@ -61,9 +100,7 @@ bcftools query -l 1kg.vcf
 bcftools query -l file.bcf | wc -l
 ```
 
-## "What is the genotype of the sample HG00107 at the position
-20:24019472? Hint: use the combination of -r, -s, and -f '[ %TGT]\n'
-options"
+## ¿Cual es el genotipo de la muestra HG00107 en la posicion 20:24019472?
 
 ```bash
 
@@ -84,8 +121,7 @@ bcftools view -r 20:24019472 -s HG00107 1kg.vcf.gz | bcftools query -f '[ %TGT]\
 ```
 
 
-## How many positions there are with more than 10 alternate alleles?
-(See the INFO/AC tag.) Hint: use the -i filtering option
+## ¿Cuantas posiciones tienen mas de 10 alelos diferentes?
 
 ```bash
 # Saber posiciones
@@ -94,8 +130,7 @@ bcftools view -i 'AC>10' 1kg.vcf| wc -l
 ```
 
 
-## List all positions where HG00107 has a non-reference genotype and
-the read depth is bigger than 10.
+## Lista todas las posiciones en las que HG00107 no tiene un genotipo de referencia y la cobertura es mayor a 10.
 
 ```bash
 
@@ -207,3 +242,18 @@ Finalmente, en la seccion de Sumary Numbers (`SN`) generada por `samtools stats`
 
 - insert size average:	**190.3**
 - insert size standard deviation: **136.4**
+
+
+
+
+**## Referencias**
+1. Copiar en Linux: con CP es muy sencillo. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.mx/digitalguide/servidores/configuracion/comando-cp-de-linux/
+
+2. Markdown: introducción al lenguaje de marcado. (s/f). IONOS Digital Guide. Recuperado el 20 de febrero de 2023, de https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-markdown/
+
+3. The SAM/BAM Format Specification Working Group. (s/f). Sequence alignment/map format specification. Github.io. Recuperado el 20 de febrero de 2023, de https://samtools.github.io/hts-specs/SAMv1.pdf
+
+4. Anónimo. (s/f). VCF AND BCF. Evolution and Genomics. Recuperado el 20 de febrero de 2023, de  https://evomics.org/vcf-and-bcf/#:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.
+
+
+
