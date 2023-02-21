@@ -1667,7 +1667,8 @@ bfc</h1>
 <div id="como-convertir-un-bcfvcf" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> ¿Como convertir un
 BCF–&gt;VCF?</h2>
-<p>Si es posible convertir un bcf a vcf utilizando el comando <span class="math inline">\(view\)</span></p>
+<p>Si es posible convertir un bcf a vcf utilizando el comando <span class="math inline">\(view\)</span>, el argumento <span class="math inline">\(-o\)</span> permite indicar el nombre del archivo
+de salida.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Convertir un BCG --&gt; VCF</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view 1kg.bcf <span class="at">-o</span> 1kg.vcf</span></code></pre></div>
 </div>
@@ -1685,32 +1686,40 @@ en el BCF?</h2>
 <div id="cual-es-el-genotipo-de-la-muestra-hg00107-en-la-posicion-2024019472" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> ¿Cual es el genotipo
 de la muestra HG00107 en la posicion 20:24019472?</h2>
+<p>El genotipo es “A/T”.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Comprimir VCF --&gt; GZIP</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view 1kg.vcf <span class="at">-Oz</span> <span class="at">-o</span> 1kg.vcf.gz</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtrar por nombre de la muestra</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 1kg.vcf.gz</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#INDEX</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index 1kg.vcf.gz</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtrar por posicion de la muestra y nombre</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-r</span> 20:24019472 <span class="at">-s</span> HG00107 1kg.vcf.gz</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Mostrar el genotipo</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-r</span> 20:24019472 <span class="at">-s</span> HG00107 1kg.vcf.gz <span class="kw">|</span> <span class="ex">bcftools</span> query <span class="at">-f</span> <span class="st">&#39;[ %TGT]\n&#39;</span> </span></code></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#-s es para filtrar por el nombre de la muestra</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 1kg.vcf.gz</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Indexar el archivo GZIP, esto es necesario para filtrar por posiciones</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index 1kg.vcf.gz</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtrar por posicion de la muestra y nombre</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-r</span> 20:24019472 <span class="at">-s</span> HG00107 1kg.vcf.gz</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Mostrar el genotipo</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-r</span> 20:24019472 <span class="at">-s</span> HG00107 1kg.vcf.gz <span class="kw">|</span> <span class="ex">bcftools</span> query <span class="at">-f</span> <span class="st">&#39;[ %TGT]\n&#39;</span> </span></code></pre></div>
 </div>
 <div id="cuantas-posiciones-tienen-mas-de-10-alelos-diferentes" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> ¿Cuantas posiciones
 tienen mas de 10 alelos diferentes?</h2>
+<p>Hay 4822 posiciones que tienen mas de 10 alelos diferentes.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saber posiciones</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-i</span> <span class="st">&#39;AC&gt;10&#39;</span> 1kg.vcf<span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-i</span> <span class="st">&#39;AC&gt;10&#39;</span> 1kg.vcf<span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> <span class="co">#DUDA arroja mas</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comando duda</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-f</span> <span class="st">&#39;%INFO/AC\n&#39;</span> 1kg.bcf <span class="at">-i</span><span class="st">&#39;AC&gt;10&#39;</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
 </div>
 <div id="lista-todas-las-posiciones-en-las-que-hg00107-no-tiene-un-genotipo-de-referencia-y-la-cobertura-es-mayor-a-10." class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Lista todas las
 posiciones en las que HG00107 no tiene un genotipo de referencia y la
 cobertura es mayor a 10.</h2>
+<p>Hay 451 posiciones en las que no hay un genotipo de referencia y
+tienen cobretura mayor a 10.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar la cobertura</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-f</span> <span class="st">&#39;[ % DP]\n&#39;</span></span>
@@ -1722,15 +1731,13 @@ cobertura es mayor a 10.</h2>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-i</span> <span class="st">&#39;GT=&quot;alt&quot;&#39;</span> 1kg.vcf</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ambos filtros</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 <span class="at">-i</span> <span class="st">&#39; GT=&quot;.&quot; &amp;&amp; DP&gt;10&#39;</span> 1kg.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> <span class="co">#DUDA</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 <span class="at">-i</span> <span class="st">&#39; REF=&quot;.&quot; &amp;&amp; DP&gt;10&#39;</span> 1kg.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> <span class="co">#DUDA</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Contar las posiciones</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 <span class="at">-i</span> <span class="st">&#39; REF=&quot;.&quot; &amp;&amp; DP&gt;10&#39;</span> 1kg.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> <span class="co">#DUDA</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#PRUEBA</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-r</span> 20:29908139 <span class="at">-s</span> HG00107 1kg.vcf.gz </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ex">29908139</span></span></code></pre></div>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-s</span> HG00107 <span class="at">-f</span> <span class="st">&#39;[%POS]\n&#39;</span> <span class="at">-i</span> <span class="st">&#39;GT =&quot;alt&quot; &amp; DP&gt;10&#39;</span> 1kg.vcf.gz</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Contar las posiciones</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-s</span> HG00107 <span class="at">-f</span> <span class="st">&#39;[%POS]\n&#39;</span> <span class="at">-i</span> <span class="st">&#39;GT =&quot;alt&quot; &amp; DP&gt;10&#39;</span> 1kg.vcf.gz <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#DUDA EN COMANDO </span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-s</span> HG00107 <span class="kw">|</span> <span class="ex">query</span> <span class="at">-i</span> <span class="st">&#39; REF=&quot;.&quot; &amp;&amp; DP&gt;10&#39;</span> 1kg.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span>  <span class="co">#arroja menos</span></span></code></pre></div>
 </div>
 </div>
 <div id="practicas-estadisticas" class="section level1" number="3">
@@ -1781,9 +1788,9 @@ ordenado.</li>
 </ul>
 </div>
 </div>
-<div id="que-proorcion-de-las-lecturas-fueron-mapeadas" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> ¿Que proorcion de las
-lecturas fueron mapeadas?</h2>
+<div id="que-proporcion-de-las-lecturas-fueron-mapeadas" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> ¿Que proporcion de
+las lecturas fueron mapeadas?</h2>
 <p>Con el mismo comando de <code>samtools flagstat NA20538.bam</code>,
 se observa que el porcentaje de <em>reads</em> mapeados fue de
 <strong>93.26%</strong> (323,966 lecturas).</p>
