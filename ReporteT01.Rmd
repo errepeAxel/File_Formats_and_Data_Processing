@@ -43,22 +43,24 @@ Identificador del grupo de lectura, esta etiqueta identifica a qué grupo de lec
 
 ## ¿Cuál es la plataforma de secuenciación?
 
-PL _platform_, plataforma usada para generar las lecturas: Illumina. Para conocer la plataforma utilizada, existe la etiqueta PL, que se puede encontrar en el encabezado del archivo BAM.
+Para conocer la plataforma utilizada, existe la etiqueta PL (*platform)*, que se puede encontrar en el encabezado del archivo BAM.
 
 ```bash
 # Buscamos la etiqueta PL dentro del header
 samtools view -H NA20538.bam | grep 'PL'
 ```
 
+Para estas muestras se utiizo __Illumina__.
+
 ## ¿Qué versión de ensamblaje humano se usó para realizar las alineaciones?
 
-AS _genome assembly identifier_, versión del ensamblaje humano: NCBI37 (**GRCh37** Genome Reference Consortium Human Build 37). 
-
-Las entradas @SQ del encabezado contienen información acerca de las secuencias de referencia. El AS nos habla acerca del genoma de referencia utilizado para realizar el alineamiento.
+Las entradas @SQ del encabezado contienen información acerca de las secuencias de referencia. La etiqueta AS (*genome assembly identifier*) nos habla acerca del genoma de referencia utilizado para realizar el alineamiento.
 
 ```bash
 samtools view -H NA20538.bam | grep 'AS'
 ```
+
+el genoma de ensamblaje utilizado fue el __NCBI37: GRCh37 (*Genome Reference Consortium Human Build 37*)__, especificamente el descargado del Proyecto de los 1000 genomas.
 
 ## ¿Qué programadas fueron utlizados para crear este archivo BAM?
 

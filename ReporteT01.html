@@ -1600,23 +1600,24 @@ de lectura debe ser único.</p>
 <div id="cuál-es-la-plataforma-de-secuenciación" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> ¿Cuál es la
 plataforma de secuenciación?</h2>
-<p>PL <em>platform</em>, plataforma usada para generar las lecturas:
-Illumina. Para conocer la plataforma utilizada, existe la etiqueta PL,
-que se puede encontrar en el encabezado del archivo BAM.</p>
+<p>Para conocer la plataforma utilizada, existe la etiqueta PL
+(<em>platform)</em>, que se puede encontrar en el encabezado del archivo
+BAM.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscamos la etiqueta PL dentro del header</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-H</span> NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;PL&#39;</span></span></code></pre></div>
+<p>Para estas muestras se utiizo <strong>Illumina</strong>.</p>
 </div>
 <div id="qué-versión-de-ensamblaje-humano-se-usó-para-realizar-las-alineaciones" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> ¿Qué versión de
 ensamblaje humano se usó para realizar las alineaciones?</h2>
-<p>AS <em>genome assembly identifier</em>, versión del ensamblaje
-humano: NCBI37 (<strong>GRCh37</strong> Genome Reference Consortium
-Human Build 37).</p>
 <p>Las entradas <span class="citation">@SQ</span> del encabezado
-contienen información acerca de las secuencias de referencia. El AS nos
-habla acerca del genoma de referencia utilizado para realizar el
-alineamiento.</p>
+contienen información acerca de las secuencias de referencia. La
+etiqueta AS (<em>genome assembly identifier</em>) nos habla acerca del
+genoma de referencia utilizado para realizar el alineamiento.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-H</span> NA20538.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;AS&#39;</span></span></code></pre></div>
+<p>el genoma de ensamblaje utilizado fue el <strong>NCBI37: GRCh37
+(<em>Genome Reference Consortium Human Build 37</em>)</strong>,
+especificamente el descargado del Proyecto de los 1000 genomas.</p>
 </div>
 <div id="qué-programadas-fueron-utlizados-para-crear-este-archivo-bam" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> ¿Qué programadas
