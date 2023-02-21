@@ -256,5 +256,4 @@ Finalmente, en la seccion de Sumary Numbers (`SN`) generada por `samtools stats`
 4. Anónimo. (s/f). VCF AND BCF. Evolution and Genomics. Recuperado el 20 de febrero de 2023, de  https://evomics.org/vcf-and-bcf/#:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.
 
 
-https://evomics.org/vcf-and-bcf/#:~:text=BCF%2C%20or%20the%20binary%20variant,that%20between%20BAM%20and%20SAM.
 
