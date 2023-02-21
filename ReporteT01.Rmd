@@ -103,7 +103,7 @@ Un BCF es el archivo binario del VCF.
 
 ##  ¿Como convertir un BCF-->VCF?
 
-Si es posible convertir un bcf a vcf utilizando el comando $view$
+Si es posible convertir un bcf a vcf utilizando el comando $view$, el argumento $-o$ permite indicar el nombre del archivo de salida.
 
 ```bash
 #Convertir un BCG --> VCF
@@ -125,15 +125,17 @@ bcftools query -l 1kg.bcf | wc -l
 
 ## ¿Cual es el genotipo de la muestra HG00107 en la posicion 20:24019472?
 
+El genotipo es "A/T".
 ```bash
 
 #Comprimir VCF --> GZIP
 bcftools view 1kg.vcf -Oz -o 1kg.vcf.gz
 
 #Filtrar por nombre de la muestra
+#-s es para filtrar por el nombre de la muestra
 bcftools view -s HG00107 1kg.vcf.gz
  
-#INDEX
+#Indexar el archivo GZIP, esto es necesario para filtrar por posiciones
 bcftools index 1kg.vcf.gz
 
 #Filtrar por posicion de la muestra y nombre
@@ -146,14 +148,17 @@ bcftools view -r 20:24019472 -s HG00107 1kg.vcf.gz | bcftools query -f '[ %TGT]\
 
 ## ¿Cuantas posiciones tienen mas de 10 alelos diferentes?
 
+Hay 4822 posiciones que tienen mas de 10 alelos diferentes.
+
 ```bash
 # Saber posiciones
 bcftools view -i 'AC>10' 1kg.vcf| wc -l
 
 ```
 
-
 ## Lista todas las posiciones en las que HG00107 no tiene un genotipo de referencia y la cobertura es mayor a 10.
+
+Hay 44 posiciones en las que no hay un genotipo de referencia y tienen cobretura mayor a 10.
 
 ```bash
 
@@ -167,15 +172,10 @@ bcftools view -s HG00107 1kg.vcf
 bcftools view -i 'GT="alt"' 1kg.vcf
 
 # Ambos filtros
-bcftools view -s HG00107 -i ' GT="." && DP>10' 1kg.vcf | wc -l #DUDA
-bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l #DUDA
+bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf 
 
 #Contar las posiciones
-bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l #DUDA
-
-#PRUEBA
-bcftools view -r 20:29908139 -s HG00107 1kg.vcf.gz 
-29908139
+bcftools view -s HG00107 -i ' REF="." && DP>10' 1kg.vcf | wc -l 
 ```
 
 # Practicas estadisticas
