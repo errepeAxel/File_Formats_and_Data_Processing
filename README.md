@@ -6,6 +6,7 @@ By:
 - Rodriguez Perez Axel
 
 21/02/23
+
 Content:
 - BAM file practice
 - BCF file practice
